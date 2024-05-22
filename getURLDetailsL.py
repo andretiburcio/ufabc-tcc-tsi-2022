@@ -1,9 +1,12 @@
 import requests
+from nssdca_list import url_spacecraft_id
 
+url_base = "https://nssdc.gsfc.nasa.gov/nmc/spacecraft/display.action?id="
+output_finename = "detailedNSSDCA_list.csv"
 
 x = 1
 
-with open('csvfile.csv','w') as file:
+with open(output_finename,'w') as file:
         file.write("num;code;url;status_code;launch_date;launch_vehicle;launch_site;")
         file.write('\n')
 
@@ -22,7 +25,7 @@ for i in url_spacecraft_id:
 
     print(x)
 
-    with open('csvfile.csv','a') as file:
+    with open(output_finename,'a') as file:
         file.write(str(x)+';'+i+';'+url+';'+str(r.status_code)+";"+launch_date+";"+launch_vehicle+";"+launch_site+';')
         file.write('\n') 
     x=x+1

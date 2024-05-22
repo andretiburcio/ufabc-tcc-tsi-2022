@@ -1,7 +1,6 @@
-def CarregaParametros():
-    url_base = "https://nssdc.gsfc.nasa.gov/nmc/spacecraft/display.action?id="
-    url_spacecraft_id = [
-        '2019-029L',
+#Lista coletada manualmente em 16/05/2024
+
+url_spacecraft_id = ['2019-029L',
     '2019-029B',
     '2019-029C',
     '2019-029D',
