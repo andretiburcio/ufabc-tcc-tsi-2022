@@ -1,18 +1,14 @@
 import requests
+from nssdca_list import url_spacecraft_id
 from datetime import datetime
 
 url_base = "https://nssdc.gsfc.nasa.gov/nmc/spacecraft/display.action?id="
-url_spacecraft_id = [
-    '2019-029L',
-'2019-029B',
-'2019-029C']
-
-output_finename = "test_detailedNSSDCA_list.csv"
+output_finename = "detailedNSSDCA_list.csv"
 
 x = 1
 
 with open(output_finename,'w') as file:
-        file.write("num;code;url;status_code;launch_date;launch_vehicle;launch_site;")
+        file.write("num;code;url;status_code;launch_date;year;month;launch_vehicle;launch_site;")
         file.write('\n')
 
 for i in url_spacecraft_id:
@@ -26,15 +22,16 @@ for i in url_spacecraft_id:
     launch_vehicle = r.text[launch_vehicle_start+18:launch_vehicle_start+38:]
 
     launch_site_start = r.text.index("Site:")
-    launch_site = r.text[launch_site_start+15:launch_site_start+50:]
-
-   
+    launch_site = r.text[launch_site_start+15:launch_site_start+44:]
 
     datetime_object = datetime.strptime(launch_date, '%Y-%m-%d')
 
     print(x, datetime_object.year, datetime_object.month)
 
     with open(output_finename,'a') as file:
-        file.write(str(x)+';'+i+';'+url+';'+str(r.status_code)+";"+launch_date+";"+launch_vehicle+";"+launch_site+';')
+        file.write(str(x)+';'+i+';'+url+';'+str(r.status_code)+";"+launch_date+";"+str(datetime_object.year)+";"+str(datetime_object.month)+";"+launch_vehicle+";"+launch_site+';')
         file.write('\n') 
     x=x+1
+
+    #TO DO: INSERIR O NOME DO SATÉLITE
+
