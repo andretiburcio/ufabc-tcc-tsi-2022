@@ -3,7 +3,7 @@ from nssdca_list import url_spacecraft_id
 from datetime import datetime
 
 url_base = "https://nssdc.gsfc.nasa.gov/nmc/spacecraft/display.action?id="
-output_finename = "detailedNSSDCA_list.csv"
+output_finename = "detailedNSSDCA_list_OneWeb.csv"
 
 x = 1
 
