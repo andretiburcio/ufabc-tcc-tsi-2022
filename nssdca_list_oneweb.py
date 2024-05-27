@@ -1,11 +1,5 @@
-#For test purpose only
-""" url_spacecraft_id = [
-    '2019-029L',
-    '2019-029B',
-    '2019-029C']
- """
-
 #Lista coletada manualmente em 25/05/2024
+
 url_spacecraft_id = ['2019-010E',
     '2019-010D',
     '2019-010C',
